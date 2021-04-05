@@ -1,6 +1,6 @@
 # wab92saga
 pug  repo
-Heroku url https://wab92saga.herokuapp.com/
+Heroku url https://db92saga.herokuapp.com/
 
 Class name Car,
 Attributes: 
