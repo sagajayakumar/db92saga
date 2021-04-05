@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h1= title
+  -
+    const cars = [
+      {
+      'Name': "Rogue",
+      'Company': "Nissan",
+      'Price':"$25750"
+      },
+      {
+      'Name': "Tahoe",
+      'Company': "Chevrolet",
+      'Price':"$49000"
+      },
+      {
+      'Name': "Santa Fe",
+      'Company': "Hyundai",
+      'Price':"$26850"
+      },
+      ]
+  div(class="container-fluid mt-3")
+  div(class="row")
+    each car,index in cars
+      div(class="col-sm-2 "  onclick=`buy(${index})`) #{car.Name} - #{car.Company} - #{car.Price} 
+  script.
+      function buy(itemNo)
+      {
+        alert(`You purchased Item ${itemNo+1}`)
+      }    
