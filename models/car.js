@@ -26,21 +26,4 @@ async function recreateDB() {
         Company: "Hyundai",
         Price: "$28000"
     });
-
-    instance1.save(function(err, doc) {
-        if (err) return console.error(err);
-        console.log("First object saved")
-    });
-
-    instance2.save(function(err, doc) {
-        if (err) return console.error(err);
-        console.log("Second object saved")
-    });
-
-    instance3.save(function(err, doc) {
-        if (err) return console.error(err);
-        console.log("Third object saved")
-    });
 }
-let reseed = true;
-if (reseed) { recreateDB(); }
