@@ -2,24 +2,7 @@ extends layout
 
 block content
   h1= title
-  -
-    const cars = [
-      {
-      'Name': "Rogue",
-      'Company': "Nissan",
-      'Price':"$25750"
-      },
-      {
-      'Name': "Tahoe",
-      'Company': "Chevrolet",
-      'Price':"$49000"
-      },
-      {
-      'Name': "Santa Fe",
-      'Company': "Hyundai",
-      'Price':"$26850"
-      },
-      ]
+  - let cars=results
   div(class="container-fluid mt-3")
   div(class="row")
     each car,index in cars
