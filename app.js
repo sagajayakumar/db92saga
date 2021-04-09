@@ -22,7 +22,7 @@ async function recreateDB() {
     // Delete everything
     await car.deleteMany();
     let instance1 = new car({
-        name: "Rouge",
+        Name: "Rouge",
         Company: "Nissan",
         Price: "$24000"
     });
@@ -32,7 +32,7 @@ async function recreateDB() {
         console.log("First object saved")
     });
     let instance2 = new car({
-        name: "Tahoe",
+        Name: "Tahoe",
         Company: "Chevrolet",
         Price: "$49000"
     });
@@ -41,7 +41,7 @@ async function recreateDB() {
         console.log("Second object saved")
     });
     let instance3 = new car({
-        name: "Santa Fe",
+        Name: "Santa Fe",
         Company: "Hyundai",
         Price: "$28000"
     });
