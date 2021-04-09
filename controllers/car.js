@@ -12,11 +12,6 @@ exports.car_list = async function(req, res) {
 
 };
 
-// for a specific car.
-exports.car_detail = function(req, res) {
-    res.send('NOT IMPLEMENTED: car detail: ' + req.params.id);
-};
-
 // Handle car create on POST.
 exports.car_create_post = async function(req, res) {
     console.log(req.body)
