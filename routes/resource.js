@@ -13,6 +13,9 @@ router.post('/car', car_controller.car_create_post);
 router.delete('/cars/:id', car_controller.car_delete);
 // PUT request to update car.
 router.put('/car/:id', car_controller.car_update_put);
+if (req.body.checkboxsale) toUpdate.sale = true;
+else toUpdate.same = false;
+
 // GET request for one car.
 router.get('/car/:id', car_controller.car_detail);
 // GET request for list of all car items.
