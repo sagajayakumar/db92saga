@@ -62,9 +62,9 @@ exports.car_detail = async function(req, res) {
 
 // Handle car update form on PUT.
 exports.car_update_put = async function(req, res) {
-    console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`)
+    console.log(`update on id ${req.params.Name} with body ${JSON.stringify(req.body)}`)
     try {
-        let toUpdate = await car.findById(req.params.id)
+        let toUpdate = await car.findById(req.params.Name)
             // Do updates of properties
         if (req.body.Company) toUpdate.Company = req.body.Company;
         if (req.body.Price) toUpdate.Price = req.body.Price;
