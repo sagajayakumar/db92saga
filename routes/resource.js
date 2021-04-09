@@ -12,7 +12,7 @@ router.post('/car', car_controller.car_create_post);
 // DELETE request to delete car.
 router.delete('/cars/:id', car_controller.car_delete);
 // PUT request to update car.
-router.put('/cars/:id', car_controller.car_update_put);
+router.put('/car/:id', car_controller.car_update_put);
 // GET request for one car.
 router.get('/car/:id', car_controller.car_detail);
 // GET request for list of all car items.
