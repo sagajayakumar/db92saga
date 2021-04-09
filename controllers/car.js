@@ -38,7 +38,20 @@ exports.car_delete = function(req, res) {
 
 // Handle car update form on PUT.
 exports.car_update_put = function(req, res) {
-    res.send('NOT IMPLEMENTED: Costume update PUT' + req.params.id);
+
+    console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`)
+    try {
+        let toUpdate = await Costume.findById(req.params.id)
+            // Do updates of properties
+        if (req.body.Company) toUpdate.Company = req.body.Company;
+        if (req.body.Price) toUpdate.Price = req.body.Price;
+        let result = await toUpdate.save();
+        console.log("Sucess " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": ${err}: Update for id ${req.params.id} failed`);
+    }
 };
 
 // VIEWS
