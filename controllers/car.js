@@ -81,6 +81,19 @@ exports.car_detail = async function(req, res) {
     }
 };
 
+// Handle building the view for creating a costume.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.car_create_Page = function(req, res) {
+    console.log("create view")
+    try {
+        res.render('carcreate', { title: 'car Create' });
+    } catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
+
 // Handle car update form on PUT.
 exports.car_update_put = async function(req, res) {
     console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`)
