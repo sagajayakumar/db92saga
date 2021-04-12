@@ -17,4 +17,7 @@ router.put('/car/:id', car_controller.car_update_put);
 router.get('/car/:id', car_controller.car_detail);
 // GET request for list of all car items.
 router.get('/car', car_controller.car_list);
+/* GET detail car page */
+router.get('/detail', car_controlers.car_view_one_Page);
+
 module.exports = router;
