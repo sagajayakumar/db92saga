@@ -32,7 +32,7 @@ exports.car_create_post = async function(req, res) {
 };
 
 // Handle car delete form on DELETE.
-exports.car_delete = function(req, res) {
+exports.car_delete = async function(req, res) {
     console.log("delete " + req.params.id)
     try {
         result = await car.findByIdAndDelete(req.params.id)
