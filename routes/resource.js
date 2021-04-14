@@ -21,4 +21,8 @@ router.get('/car', car_controller.car_list);
 router.get('/detail', car_controller.car_view_one_Page);
 /* GET create costume page */
 router.get('/create', car_controller.car_create_Page);
+/* GET create update page */
+router.get('/update', car_controller.car_update_Page);
+/* GET create costume page */
+router.get('/delete', car_controller.car_delete_Page);
 module.exports = router;

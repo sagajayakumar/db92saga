@@ -94,6 +94,31 @@ exports.car_create_Page = function(req, res) {
     }
 };
 
+// Handle building the view for updating a car.
+// query provides the id
+exports.car_update_Page = async function(req, res) {
+    console.log("update view for item " + req.query.id)
+    try {
+        let result = await car.findById(req.query.id)
+        res.render('carupdate', { title: 'Car Update', toShow: result });
+    } catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
+
+// Handle a delete one view with id from query
+exports.car_delete_Page = async function(req, res) {
+    console.log("Delete view for id " + req.query.id)
+    try {
+        result = await car.findById(req.query.id)
+        res.render('cardelete', { title: 'car Delete', toShow: result });
+    } catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
+
 // Handle car update form on PUT.
 exports.car_update_put = async function(req, res) {
     console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`)

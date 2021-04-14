@@ -5,15 +5,15 @@ block content
 
   form(id='CarForm', action="/resource/car", method="POST")
     div.form-group
-        label.carAttr(for='carname') Car Name
+        label.carLabel(for='carname') Car Name
         input#carname(type='text', name='Name')
     div.form-group
-        label.carAttr(for='company') Car Company
+        label.carLabel(for='company') Car Company
         input#company(type='text', name='Company')
     div.form-group
-        label.carAttr(for='price') Car Price
+        label.carLabel(for='price') Car Price
         input#price(type='text', name='Price')
-    input(type="submit")
+    input.button(type="submit")
 
   script.
     document.forms['CarForm'].addEventListener('submit', (event) => {
