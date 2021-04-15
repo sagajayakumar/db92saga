@@ -12,7 +12,7 @@ block content
     div.mr-1 ID is
     div #{carid}
   - let actionid = "/resource/cars/" + carid
-  form(id='CarForm', action= actionid, method="PUT")
+  form(id='CarForm', action= actionid, method="GET")
     div.form-group
         label.carAttr(for='Name') Car Name
         input#carname(type='text', name='Name', value= Name )
@@ -29,7 +29,7 @@ block content
       event.preventDefault();
       // TODO do something here to show user that form is being submitted
       fetch(event.target.action, {
-        method: 'PUT',
+        method: 'GET',
         body: new URLSearchParams(new FormData(event.target)) // event.target is the form
       }).then((resp) => {
         return resp.text(); // or resp.text() or whatever the server sends
@@ -38,6 +38,9 @@ block content
         // TODO handle body
       }).catch((error) => {
         // TODO handle error
+        resp = "sample";
+        console.log("sample")
+        return resp.text();
         alert("Update failed " + error )
       });
     });

@@ -3,10 +3,14 @@ extends layout
 block content
   h1= title
 
+  if (toShow == null)
+    h2 No instance to show
+  else
   - let carid = toShow._id
   - let carName = toShow.Name
   - let carCompany = toShow.Company
   - let carPrice = toShow.Price
+  form(id='carform',action= actionid, method= 'GET' )
   div
     div.row
       div(class='carAttr mr-3') Car Id is:

@@ -52,10 +52,36 @@ exports.car_view_one_Page = async function(req, res) {
         res.render('cardetail', { title: 'car Detail', toShow: result });
     } catch (err) {
         res.status(500)
+            //res.send(`{'error': '${err}'}`);\
+        let s = 'CastError: Cast to ObjectId failed for value "' + req.query.id + '" at path "_id" for model "Car"'
+            //if (err = s) {
+            //  console.log("Id not found")
+            //res.send(`Id not found`);
+            //} else {
         res.send(`{'error': '${err}'}`);
+        //}
+        // console.log(`The error "${err}" ${err.includes(" Cast to ObjectId failed for value") ? 'id not found' : 'is not'} in the sentence`);
     }
 };
 
+
+// Handle a delete one view with id from query
+exports.car_delete_Page = async function(req, res) {
+    console.log("Delete view for id " + req.query.id)
+    try {
+        result = await car.findById(req.query.id)
+        res.render('cardelete', { title: 'car Delete', toShow: result });
+    } catch (err) {
+        res.status(500)
+        let s = 'CastError: Cast to ObjectId failed for value "' + req.query.id + '" at path "_id" for model "Car"'
+        if (err = s) {
+            console.log("Id not found")
+            res.send(`Id not found`);
+        } else {
+            res.send(`{'error': '${err}'}`);
+        }
+    }
+};
 
 // VIEWS
 // Handle a show all view
@@ -107,17 +133,7 @@ exports.car_update_Page = async function(req, res) {
     }
 };
 
-// Handle a delete one view with id from query
-exports.car_delete_Page = async function(req, res) {
-    console.log("Delete view for id " + req.query.id)
-    try {
-        result = await car.findById(req.query.id)
-        res.render('cardelete', { title: 'car Delete', toShow: result });
-    } catch (err) {
-        res.status(500)
-        res.send(`{'error': '${err}'}`);
-    }
-};
+
 
 // Handle car update form on PUT.
 exports.car_update_put = async function(req, res) {
