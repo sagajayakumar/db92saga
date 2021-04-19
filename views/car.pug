@@ -3,12 +3,13 @@ extends layout
 block content
   h1= title
   - let cars=results
-  div(class="container-fluid mt-3")
-  div(class="row")
-    each car,index in cars
-      div(class="col-sm-2 "  onclick=`buy(${index})`) #{car.Name} - #{car.Company} - #{car.Price} 
+  div(class="container-fluid")
+    div(class="row m-1")
+      each car in cars
+        - let destination = `dispatch(\"/resource/update?id=${car._id}\")`
+        div(class="col-sm-2 "  class="m-1")  #{car.Name} - #{car.Company} - #{car.Price} 
+          button.btn( class="btn-primary ml-1", onclick= destination) Update
   script.
-      function buy(itemNo)
-      {
-        alert(`You purchased Item ${itemNo+1}`)
+      function dispatch(path){
+      window.location.href=path
       }    

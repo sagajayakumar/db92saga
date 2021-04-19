@@ -9,7 +9,6 @@ exports.car_list = async function(req, res) {
         res.send(`{"error": ${err}}`)
         res.status(500);
     }
-
 };
 
 // Handle car create on POST.
