@@ -27,7 +27,7 @@ async function recreateDB() {
     let instance1 = new car({
         Name: "Rouge",
         Company: "Nissan",
-        Price: "$24000"
+        Price: "24000"
     });
     instance1.save(function(err, doc) {
         if (err) return console.error(err);
@@ -36,7 +36,7 @@ async function recreateDB() {
     let instance2 = new car({
         Name: "Tahoe",
         Company: "Chevrolet",
-        Price: "$49000"
+        Price: "49000"
     });
     instance2.save(function(err, doc) {
         if (err) return console.error(err);
@@ -45,7 +45,7 @@ async function recreateDB() {
     let instance3 = new car({
         Name: "Santa Fe",
         Company: "Hyundai",
-        Price: "$28000"
+        Price: "28000"
     });
     instance3.save(function(err, doc) {
         if (err) return console.error(err);

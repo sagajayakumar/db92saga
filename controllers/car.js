@@ -23,10 +23,11 @@ exports.car_create_post = async function(req, res) {
     document.Company = req.body.Company;
     document.Price = req.body.Price;
     try {
+        console.log(res.body);
         let result = await document.save();
         res.send(result);
     } catch (err) {
-        res.error(500, `{"error": ${err}}`);
+        res.send(500, `{"error": ${err}}`);
     }
 };
 
@@ -109,7 +110,7 @@ exports.car_detail = async function(req, res) {
 // Handle building the view for creating a costume.
 // No body, no in path parameter, no query.
 // Does not need to be async
-exports.car_create_Page = function(req, res) {
+exports.car_create_Page = async function(req, res) {
     console.log("create view")
     try {
         res.render('carcreate', { title: 'car Create' });
@@ -124,11 +125,17 @@ exports.car_create_Page = function(req, res) {
 exports.car_update_Page = async function(req, res) {
     console.log("update view for item " + req.query.id)
     try {
-        let result = await car.findById(req.query.id)
-        res.render('carupdate', { title: 'Car Update', toShow: result });
+        let toUpdate = await car.findById(req.params.id)
+            // Do updates of properties
+        if (req.body.Name) toUpdate.Name = req.body.Name;
+        if (req.body.Company) toUpdate.Company = req.body.Company;
+        if (req.body.Price) toUpdate.Price = req.body.Price;
+        let result = await toUpdate.save();
+        console.log("Sucess " + result)
+        res.send(result)
     } catch (err) {
         res.status(500)
-        res.send(`{'error': '${err}'}`);
+        res.send(`{"error": ${err}: Update for id ${req.params.id} failed`);
     }
 };
 

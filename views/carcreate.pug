@@ -12,7 +12,7 @@ block content
         input#company(type='text', name='Company')
     div.form-group
         label.carLabel(for='price') Car Price
-        input#price(type='text', name='Price')
+        input#price(type='number', name='Price')
     input.button(type="submit")
 
   script.
@@ -23,12 +23,19 @@ block content
         method: 'POST',
         body: new URLSearchParams(new FormData(event.target)) // event.target is the form
       }).then((resp) => {
+        document.getElementById("errors").style.display="block"
         return resp.json(); // or resp.text() or whatever the server sends
       }).then((body) => {
-        alert("Save succeded")
+        if(body.name){
+          document.getElementById("errors").innerHTML=`${body.name}  \n ${body.message}\n`;
+          alert("Save Failed")
+        }else{
+           alert("Save succeded")
+        }
         // TODO handle body
       }).catch((error) => {
         // TODO handle error
-        alert("Save failed " + error )
+        //- document.getElementById("errors").style.display="block"
+        //- document.getElementById("errors").innerHTML="hello";
+        alert("Save failed " + error)
       });
-    });

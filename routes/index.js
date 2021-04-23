@@ -38,7 +38,7 @@ router.post('/register', function(req, res) {
                     return res.render('register', {
                         title: 'Registration',
                         message: 'access error',
-                        account: req.body.username
+                        // account: req.body.username
                     })
                 }
                 console.log('Sucess, redirect');
@@ -50,6 +50,8 @@ router.get('/login', function(req, res) {
     res.render('login', { title: 'Car App Login', user: req.user });
 });
 router.post('/login', passport.authenticate('local'), function(req, res) {
+    if (req.session.returnTo)
+        res.redirect(req.session.returnTo);
     res.redirect('/');
 });
 router.get('/logout', function(req, res) {

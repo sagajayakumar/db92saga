@@ -21,7 +21,7 @@ block content
         input#company(type='text', name='Company', value= Company )
     div.form-group
         label.carAttr(for='price') Car Price
-        input#price(type='text', name='Price', value= Price )
+        input#price(type='number', name='Price', value= Price )
     input(type="submit")
 
   script.
@@ -32,15 +32,14 @@ block content
         method: 'GET',
         body: new URLSearchParams(new FormData(event.target)) // event.target is the form
       }).then((resp) => {
-        return resp.text(); // or resp.text() or whatever the server sends
+        return resp.json(); // or resp.text() or whatever the server sends
       }).then((body) => {
         alert("Update succeded")
         // TODO handle body
       }).catch((error) => {
         // TODO handle error
-        resp = "sample";
+        //resp = "sample";
         console.log("sample")
-        return resp.text();
         alert("Update failed " + error )
       });
     });

@@ -6,10 +6,20 @@ block content
   div(class="container-fluid")
     div(class="row m-1")
       each car in cars
+        - let destinationdelete = `dispatchDelete(\"/resource/delete?id=${car._id}\")`
         - let destination = `dispatch(\"/resource/update?id=${car._id}\")`
-        div(class="col-sm-2 "  class="m-1")  #{car.Name} - #{car.Company} - #{car.Price} 
-          button.btn( class="btn-primary ml-1", onclick= destination) Update
+        - let destinationcreate = `dispatchCreate(\"/resource/create\")`
+        div(class="col-sm-2 "  class="m-1")  #{car.Name} - #{car.Company} - #{car.Price}
+          button.btn( class="btn-primary " class="m-1" class="btn-toolbar", onclick= destinationcreate) Create
+          button.btn( class="btn-danger" class="m-1" class="btn-toolbar", onclick= destinationdelete) Delete
+          button.btn( class="btn-primary"  class="m-1" class="btn-toolbar", onclick= destination) Update
   script.
       function dispatch(path){
       window.location.href=path
+      }
+      function dispatchDelete(path){
+      window.location.href=path
       }    
+      function dispatchCreate(path){
+      window.location.href=path
+      }        
